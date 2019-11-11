@@ -8,7 +8,7 @@ class masege(models.Model):
     hash = models.CharField(max_length=200)
     text = models.TextField()
     date = models.DateTimeField(default=timezone.now)
-    fazer = models.CharField(max_length=200)
+    fazer = models.CharField(max_length=200, default=".")
     name_chats = models.CharField(max_length=200)
 
     def publish(self):

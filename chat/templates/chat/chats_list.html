@@ -1,6 +1,8 @@
+{% if user.is_authenticated %}
 <html>
     <p>Hi there!</p>
     {% for chat in chats_l %}
-    {{ chat.name_chats }}
+    <h1><a href="{% url 'masege_ls' name=chat.name_chats %}">{{ chat.name_chats }}</a></h1>
     {% endfor %}
 </html>
+{% endif %}
