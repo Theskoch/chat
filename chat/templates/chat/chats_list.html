@@ -2,7 +2,14 @@
 <html>
     <p>Hi there!</p>
     {% for chat in chats_l %}
-    <h1><a href="{% url 'masege_ls' name=chat.name_chats %}">{{ chat.name_chats }}</a></h1>
+    <h1><a href="{% url 'masege_ls' name_chat=chat.name_chats %}">{{ chat.name_chats }}</a></h1>
     {% endfor %}
+
+    <a href="{%url 'logout'%}">сьебать</a>
 </html>
+
+{% else %}
+
+<a href="{% url 'login' %}">врываемся блять</a>
+
 {% endif %}
