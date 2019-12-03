@@ -20,6 +20,7 @@ def chats_list(request):
     return render(request, 'chat/chats_list.html', {'chats_l':chats_l})
 
 def masege_ls(request, name_chat):
+    name = name_chat
     if request.method == "POST":
         form = masegeForm(request.POST)
         if form.is_valid():
