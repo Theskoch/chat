@@ -8,7 +8,7 @@ class masege(models.Model):
     hash = models.CharField(max_length=200)
     text = models.TextField()
     date = models.DateTimeField(default=timezone.now)
-    fazer = models.CharField(max_length=200, default=".")
+    fazer = models.IntegerField(default=0)
     name_chats = models.CharField(max_length=200)
 
     def publish(self):
@@ -28,6 +28,24 @@ class chats(models.Model):
     def publish(self):
         self.date = timezone.now()
         self.save()
+
+    def __str__(self):
+        return self.hash
+
+class test_json(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name_chats = models.CharField(max_length=200)
+    hash = models.CharField(max_length=200)
+
+    def publish(self):
+        self.save()
+    
+    def toJSON(self):
+        return {
+            'author': self.author,
+            'name_chats': self.name_chats,
+            'hash': self.hash,
+        }
 
     def __str__(self):
         return self.hash

@@ -1,0 +1,67 @@
+{% if user.is_authenticated %}
+<html>
+    <style>
+    
+    .main
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+.masege
+{
+    padding: 5px;
+    margin: 10px;
+    border: solid 1px black;
+}
+
+    </style>
+
+<div class="main">
+    <div>
+
+    {% for masege in maseges %}
+            {% if masege.fazer == 0 %}
+
+            <div class="masege">
+            {{ masege.author }} :
+            {{ masege.text }}
+            {{ masege.date.time }}
+            {{ masege.fazer }}
+            {{ masege.id }}
+            {% for masegi in maseges_f %}
+                {% if masege.id == masegi.fazer %}
+
+                    <div class="masege">
+                    sort
+                    {{ masegi.author }} :
+                    {{ masegi.text }}
+                    {{ masegi.date.time }}
+                    {{ masegi.fazer }}
+                    {{ masegi.id }}
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+            </div>
+
+            {% else %}
+
+            {% endif %}
+
+    {% endfor %}
+
+    </div>
+    <div>
+    <form method="POST" class="masege-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default" >Save</button>
+    </form>
+
+    </div>
+</div>
+</html>
+{% endif %}
